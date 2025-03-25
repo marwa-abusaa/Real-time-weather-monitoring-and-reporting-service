@@ -1,7 +1,5 @@
 ﻿
-using System.Text.Json;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using WeatherService.Models;
 
 namespace WeatherService.Parsers
