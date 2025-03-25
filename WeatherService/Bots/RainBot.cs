@@ -5,7 +5,7 @@ namespace WeatherService.Bots
 {
     public class RainBot : IBot
     {
-        BotConfig botConfig;
+        private BotConfig botConfig;
 
         public RainBot(BotConfig botConfig)
         {

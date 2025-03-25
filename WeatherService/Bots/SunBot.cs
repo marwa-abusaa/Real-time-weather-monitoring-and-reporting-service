@@ -5,7 +5,7 @@ namespace WeatherService.Bots
 {
     public class SunBot : IBot
     {
-        BotConfig botConfig;
+        private BotConfig botConfig;
 
         public SunBot(BotConfig botConfig)
         {
@@ -14,7 +14,7 @@ namespace WeatherService.Bots
 
         public void Activate(WeatherData data)
         {
-            if (botConfig.Enabled && data.Temperature < botConfig.Threshold)
+            if (botConfig.Enabled && data.Temperature > botConfig.Threshold)
             {
                 Console.WriteLine("SunBot activated!");
                 Console.WriteLine(botConfig.Message);
