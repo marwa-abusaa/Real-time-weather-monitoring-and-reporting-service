@@ -13,10 +13,10 @@ namespace WeatherService.Services
             _JsonFilePath = jsonFilePath;
         }
 
-        public Dictionary<IBot, BotConfig> loadConfigSettings()
+        public Dictionary<string, BotConfig> loadConfigSettings()
         {
             string configText = File.ReadAllText(_JsonFilePath);
-            var results = JsonSerializer.Deserialize<Dictionary<IBot,BotConfig>>(configText);
+            var results = JsonSerializer.Deserialize<Dictionary<string,BotConfig>>(configText);
             return results;
         }
     }
