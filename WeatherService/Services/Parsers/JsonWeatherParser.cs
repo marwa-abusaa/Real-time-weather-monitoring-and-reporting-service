@@ -2,7 +2,7 @@
 using System.Text.Json;
 using WeatherService.Models;
 
-namespace WeatherService.Parsers
+namespace WeatherService.Services.Parsers
 {
     public class JsonWeatherParser : IWeatherDataParser
     {

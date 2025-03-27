@@ -1,7 +1,6 @@
-﻿
-using WeatherService.Models;
+﻿using WeatherService.Models;
 
-namespace WeatherService.Parsers
+namespace WeatherService.Services.Parsers
 {
     public interface IWeatherDataParser
     {

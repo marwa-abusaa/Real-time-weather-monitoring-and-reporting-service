@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using WeatherService.Models;
 
-namespace WeatherService.Parsers
+namespace WeatherService.Services.Parsers
 {
     public class XmlWeatherParser : IWeatherDataParser
     {
