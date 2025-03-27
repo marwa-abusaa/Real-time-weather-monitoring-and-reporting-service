@@ -1,13 +1,12 @@
 ﻿
-namespace WeatherService.Presentation
+namespace WeatherService.Presentation;
+
+public class MenuService
 {
-    public class MenuService
+    public void ShowMenu()
     {
-        public void ShowMenu()
-        {
-            Console.WriteLine("\n1. Enter weather data");
-            Console.WriteLine("2. Exit");
-            Console.Write("\nChoose an option: ");
-        }
+        Console.WriteLine("\n1. Enter weather data");
+        Console.WriteLine("2. Exit");
+        Console.Write("\nChoose an option: ");
     }
 }

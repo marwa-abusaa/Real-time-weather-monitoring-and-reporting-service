@@ -1,19 +1,18 @@
 ﻿
 using WeatherService.Parsers;
 
-namespace WeatherService.Presentation
+namespace WeatherService.Presentation;
+
+public class WeatherDataParserFactory
 {
-    public class WeatherDataParserFactory
+    public IWeatherDataParser? DetectDataFormat(string inputData)
     {
-        public IWeatherDataParser? DetectDataFormat(string inputData)
-        {
-            if (inputData.TrimStart().StartsWith("{"))
-                return new JsonWeatherParser();
+        if (inputData.TrimStart().StartsWith("{"))
+            return new JsonWeatherParser();
 
-            if (inputData.TrimStart().StartsWith("<"))
-                return new XmlWeatherParser();
+        if (inputData.TrimStart().StartsWith("<"))
+            return new XmlWeatherParser();
 
-            return null;
-        }
+        return null;
     }
 }
