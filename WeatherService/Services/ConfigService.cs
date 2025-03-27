@@ -1,6 +1,6 @@
 ﻿
 using System.Text.Json;
-using WeatherService.Bots;
+using WeatherService.Models;
 
 namespace WeatherService.Services
 {

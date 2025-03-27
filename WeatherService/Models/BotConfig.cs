@@ -1,5 +1,4 @@
-﻿
-namespace WeatherService.Bots
+﻿namespace WeatherService.Models
 {
     public class BotConfig
     {
