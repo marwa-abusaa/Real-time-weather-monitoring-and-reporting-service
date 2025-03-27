@@ -1,10 +1,8 @@
-﻿
-using WeatherService.Models;
+﻿using WeatherService.Models;
 
-namespace WeatherService.Bots
+namespace WeatherService.Bots;
+
+public interface IBotService
 {
-    public interface IBotService
-    {
-        void Activate(WeatherData data);
-    }
+    void Activate(WeatherData data);
 }

@@ -1,9 +1,8 @@
 ﻿using WeatherService.Models;
 
-namespace WeatherService.Services.Parsers
+namespace WeatherService.Services.Parsers;
+
+public interface IWeatherDataParser
 {
-    public interface IWeatherDataParser
-    {
-        WeatherData Parse(string input);
-    }
+    WeatherData Parse(string input);
 }

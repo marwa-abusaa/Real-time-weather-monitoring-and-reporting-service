@@ -1,23 +1,22 @@
 ﻿using WeatherService.Models;
 
-namespace WeatherService.Bots
+namespace WeatherService.Bots;
+
+public class SnowBotService : IBotService 
 {
-    public class SnowBotService : IBotService 
+    private BotConfig botConfig;
+
+    public SnowBotService(BotConfig botConfig)
     {
-        private BotConfig botConfig;
+        this.botConfig = botConfig;
+    }
 
-        public SnowBotService(BotConfig botConfig)
+    public void Activate(WeatherData data)
+    {
+        if (botConfig.Enabled && data.Temperature < botConfig.Threshold)
         {
-            this.botConfig = botConfig;
-        }
-
-        public void Activate(WeatherData data)
-        {
-            if (botConfig.Enabled && data.Temperature < botConfig.Threshold)
-            {
-                Console.WriteLine("SnowBot activated!");
-                Console.WriteLine(botConfig.Message);
-            }
+            Console.WriteLine("SnowBot activated!");
+            Console.WriteLine(botConfig.Message);
         }
     }
 }

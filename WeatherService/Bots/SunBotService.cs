@@ -1,23 +1,22 @@
 ﻿using WeatherService.Models;
 
-namespace WeatherService.Bots
+namespace WeatherService.Bots;
+
+public class SunBotService : IBotService
 {
-    public class SunBotService : IBotService
+    private BotConfig botConfig;
+
+    public SunBotService(BotConfig botConfig)
     {
-        private BotConfig botConfig;
+        this.botConfig = botConfig;
+    }
 
-        public SunBotService(BotConfig botConfig)
+    public void Activate(WeatherData data)
+    {
+        if (botConfig.Enabled && data.Temperature > botConfig.Threshold)
         {
-            this.botConfig = botConfig;
-        }
-
-        public void Activate(WeatherData data)
-        {
-            if (botConfig.Enabled && data.Temperature > botConfig.Threshold)
-            {
-                Console.WriteLine("SunBot activated!");
-                Console.WriteLine(botConfig.Message);
-            }
+            Console.WriteLine("SunBot activated!");
+            Console.WriteLine(botConfig.Message);
         }
     }
 }
