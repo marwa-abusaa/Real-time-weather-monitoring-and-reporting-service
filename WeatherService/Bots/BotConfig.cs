@@ -3,8 +3,8 @@ namespace WeatherService.Bots
 {
     public class BotConfig
     {
-        public bool Enabled { get; set; }
-        public double Threshold { get; set; }
-        public string Message { get; set; }
+        public required bool Enabled { get; set; }
+        public required double Threshold { get; set; }
+        public required string Message { get; set; } 
     }
 }
