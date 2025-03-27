@@ -1,5 +1,5 @@
 ﻿
-using WeatherService.Parsers;
+using WeatherService.Services.Parsers;
 
 namespace WeatherService.Presentation;
 
