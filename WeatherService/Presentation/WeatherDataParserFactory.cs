@@ -5,7 +5,7 @@ namespace WeatherService.Presentation;
 
 public class WeatherDataParserFactory
 {
-    public IWeatherDataParser? DetectDataFormat(string inputData)
+    public IWeatherDataParser? Create(string inputData)
     {
         if (inputData.TrimStart().StartsWith("{"))
             return new JsonWeatherParser();

@@ -47,7 +47,7 @@ public class Program
         Console.WriteLine("Enter weather data (JSON or XML). Press Ctrl+Z then Enter to finish: ");
         string inputData = ReadInputData();
 
-        var weatherDataParser = parserFactory.DetectDataFormat(inputData);
+        var weatherDataParser = parserFactory.Create(inputData);
         var weatherData = weatherDataParser?.Parse(inputData);
 
         if (weatherData != null)
