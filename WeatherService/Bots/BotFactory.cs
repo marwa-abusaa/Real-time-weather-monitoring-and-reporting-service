@@ -1,6 +1,5 @@
 ﻿
 using WeatherService.Models;
-
 namespace WeatherService.Bots
 {
     public class BotFactory

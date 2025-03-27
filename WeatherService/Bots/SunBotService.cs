@@ -1,5 +1,4 @@
-﻿
-using WeatherService.Models;
+﻿using WeatherService.Models;
 
 namespace WeatherService.Bots
 {
