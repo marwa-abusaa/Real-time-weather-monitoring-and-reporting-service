@@ -26,11 +26,11 @@ namespace WeatherService.Bots
             switch (botName)
             {
                 case "RainBot":
-                    return new RainBot(botConfig);
+                    return new RainBotService(botConfig);
                 case "SunBot":
-                    return new SunBot(botConfig);
+                    return new SunBotService(botConfig);
                 case "SnowBot":
-                    return new SnowBot(botConfig);
+                    return new SnowBotService(botConfig);
                 default:
                     throw new InvalidOperationException("Unknown bot type");
             }
