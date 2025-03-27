@@ -2,7 +2,7 @@
 
 namespace WeatherService.Bots
 {
-    public class SunBotService : IBot
+    public class SunBotService : IBotService
     {
         private BotConfig botConfig;
 

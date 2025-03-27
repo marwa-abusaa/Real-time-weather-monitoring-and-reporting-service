@@ -3,7 +3,7 @@ using WeatherService.Models;
 
 namespace WeatherService.Bots
 {
-    public class RainBotService : IBot
+    public class RainBotService : IBotService
     {
         private BotConfig botConfig;
 

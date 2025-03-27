@@ -11,18 +11,18 @@ namespace WeatherService.Bots
             _botConfigurations = botConfigurations;
         }
 
-        public List<IBot> CreateBotList()
+        public List<IBotService> CreateBotList()
         {
-            var bots = new List<IBot>();
+            var bots = new List<IBotService>();
             foreach (var item in _botConfigurations)
             {
-                IBot bot = CreateBot(item.Key, item.Value);
+                IBotService bot = CreateBot(item.Key, item.Value);
                 bots.Add(bot);
             }
             return bots;
         }
 
-        private IBot CreateBot(string botName, BotConfig botConfig)
+        private IBotService CreateBot(string botName, BotConfig botConfig)
         {
             switch (botName)
             {

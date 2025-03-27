@@ -3,7 +3,7 @@ using WeatherService.Models;
 
 namespace WeatherService.Bots
 {
-    public interface IBot
+    public interface IBotService
     {
         void Activate(WeatherData data);
     }
