@@ -1,7 +1,6 @@
-﻿
-using WeatherService.Services.Parsers;
+﻿using WeatherService.Services.Parsers;
 
-namespace WeatherService.Presentation;
+namespace WeatherService.Services;
 
 public class WeatherDataParserFactory
 {
