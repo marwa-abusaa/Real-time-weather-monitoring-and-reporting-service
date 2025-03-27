@@ -3,11 +3,11 @@ using WeatherService.Models;
 
 namespace WeatherService.Bots
 {
-    public class SunBot : IBot
+    public class SunBotService : IBot
     {
         private BotConfig botConfig;
 
-        public SunBot(BotConfig botConfig)
+        public SunBotService(BotConfig botConfig)
         {
             this.botConfig = botConfig;
         }
