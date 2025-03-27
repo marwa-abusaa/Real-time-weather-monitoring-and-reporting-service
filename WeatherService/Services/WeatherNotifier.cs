@@ -6,9 +6,9 @@ namespace WeatherService.Services
 {
     public class WeatherNotifier
     {
-        private readonly List<IBot> _bots;
+        private readonly List<IBotService> _bots;
 
-        public WeatherNotifier(List<IBot> bots)
+        public WeatherNotifier(List<IBotService> bots)
         {
             _bots = bots;
         }

@@ -1,6 +1,5 @@
-﻿
-using System.Text.Json;
-using WeatherService.Bots;
+﻿using System.Text.Json;
+using WeatherService.Models;
 
 namespace WeatherService.Services
 {
@@ -16,8 +15,7 @@ namespace WeatherService.Services
         public Dictionary<string, BotConfig> loadConfigSettings()
         {
             string configText = File.ReadAllText(_JsonFilePath);
-            var results = JsonSerializer.Deserialize<Dictionary<string,BotConfig>>(configText);
-            return results;
+            return JsonSerializer.Deserialize<Dictionary<string, BotConfig>>(configText)!;
         }
     }
 }
