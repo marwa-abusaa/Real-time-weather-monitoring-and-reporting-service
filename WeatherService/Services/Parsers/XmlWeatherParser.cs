@@ -12,9 +12,9 @@ namespace WeatherService.Services.Parsers
 
             var weatherData = new WeatherData
             {
-                Location = xDoc.Root.Element("Location").Value,
-                Temperature=double.Parse(xDoc.Root.Element("Temperature").Value),
-                Humidity = double.Parse(xDoc.Root.Element("Humidity").Value),
+                Location = xDoc.Root!.Element("Location")?.Value ?? string.Empty,
+                Temperature = double.TryParse(xDoc.Root.Element("Temperature")?.Value, out var temp) ? temp : 0, 
+                Humidity = double.TryParse(xDoc.Root.Element("Humidity")?.Value, out var humidity) ? humidity : 0                 
             };
 
             return weatherData;
