@@ -1,5 +1,4 @@
 ﻿using WeatherService.Bots;
-using WeatherService.Models;
 using WeatherService.Presentation;
 using WeatherService.Services;
 

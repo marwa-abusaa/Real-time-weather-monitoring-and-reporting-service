@@ -1,5 +1,6 @@
 ﻿using WeatherService.Enums;
 using WeatherService.Models;
+using WeatherService.Services.Bots;
 
 namespace WeatherService.Bots;
 

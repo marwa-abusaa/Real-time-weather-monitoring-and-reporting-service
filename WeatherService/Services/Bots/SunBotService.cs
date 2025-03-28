@@ -1,6 +1,7 @@
-﻿using WeatherService.Models;
+﻿using WeatherService.Bots;
+using WeatherService.Models;
 
-namespace WeatherService.Bots;
+namespace WeatherService.Services.Bots;
 
 public class SunBotService : IBotService
 {
