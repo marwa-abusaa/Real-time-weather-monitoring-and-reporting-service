@@ -41,7 +41,7 @@ A C# console application that simulates a real-time weather monitoring and repor
     "Message": "Brrr, it's getting chilly!"
   }
 }
-
+```
 ## 📌 Notes
 
 - You can easily extend this project by adding new bots or supporting more data formats.
