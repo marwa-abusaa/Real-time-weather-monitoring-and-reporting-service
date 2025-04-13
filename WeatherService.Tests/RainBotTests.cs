@@ -1,5 +1,4 @@
-﻿
-using AutoFixture;
+﻿using AutoFixture;
 using WeatherService.Models;
 using WeatherService.Services.Bots;
 
@@ -20,12 +19,16 @@ public class RainBotTests
     {
         var fixture = new Fixture();
         WeatherData weatherData = fixture.Build<WeatherData>().With(w => w.Humidity, humidity).Create();
-        fixture.Customize<BotConfig>(b => b.With(bot => bot.Enabled, enabled).With(bot => bot.Threshold, threshold).With(bot => bot.Message, message));
-        var botConfig = fixture.Create<BotConfig>();
-        
+        var botConfig = new BotConfig
+        {
+            Enabled = enabled,
+            Threshold = threshold,
+            Message = message
+        };
 
         RainBotService rainBotService = new RainBotService(botConfig);
         rainBotService.Activate(weatherData);
+
 
         if (shouldPrint)
         {
