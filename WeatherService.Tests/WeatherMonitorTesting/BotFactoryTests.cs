@@ -3,7 +3,7 @@ using FluentAssertions;
 using WeatherService.Bots;
 using WeatherService.Models;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.WeatherMonitorTesting;
 
 public class BotFactoryTests
 {

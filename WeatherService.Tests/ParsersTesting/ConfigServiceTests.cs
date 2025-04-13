@@ -3,7 +3,7 @@ using WeatherService.Models;
 using WeatherService.Services.FileReaders;
 using FluentAssertions;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.ParsersTesting;
 
 public class ConfigServiceTests
 {

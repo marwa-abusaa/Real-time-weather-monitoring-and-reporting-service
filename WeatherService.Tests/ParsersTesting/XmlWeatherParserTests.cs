@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using WeatherService.Services.Parsers;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.ParsersTesting;
 
 public class XmlWeatherParserTests
 {

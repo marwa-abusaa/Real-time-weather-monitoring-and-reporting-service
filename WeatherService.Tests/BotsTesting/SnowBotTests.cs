@@ -2,7 +2,7 @@
 using WeatherService.Models;
 using WeatherService.Services.Bots;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.BotsTesting;
 
 public class SnowBotTests
 {

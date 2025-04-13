@@ -2,23 +2,23 @@
 using WeatherService.Models;
 using WeatherService.Services.Bots;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.BotsTesting;
 
-public class SunBotTests
+public class RainBotTests
 {
     [Theory]
-    [InlineData(false, 80, 30, "", false)]
-    [InlineData(true, 20, 30, "", false)]
-    [InlineData(true, 36, 30, "Wow, it's a scorcher out there!", true)]
+    [InlineData(false, 80, 70, "", false)]
+    [InlineData(true, 60, 70, "", false)]
+    [InlineData(true, 80, 70, "It looks like it's about to pour down!", true)]
     public void Activate_ShouldBehaveAccordingToConditions(
         bool enabled,
-        double temperature,
+        double humidity,
         double threshold,
         string message,
         bool shouldPrint)
     {
         var fixture = new Fixture();
-        WeatherData weatherData = fixture.Build<WeatherData>().With(w => w.Temperature, temperature).Create();
+        WeatherData weatherData = fixture.Build<WeatherData>().With(w => w.Humidity, humidity).Create();
         var botConfig = new BotConfig
         {
             Enabled = enabled,
@@ -26,13 +26,13 @@ public class SunBotTests
             Message = message
         };
 
-        SunBotService sunBotService = new SunBotService(botConfig);
-        sunBotService.Activate(weatherData);
+        RainBotService rainBotService = new RainBotService(botConfig);
+        rainBotService.Activate(weatherData);
 
 
         if (shouldPrint)
         {
-            Assert.Equal("Wow, it's a scorcher out there!", message);
+            Assert.Equal("It looks like it's about to pour down!", message);
         }
         else
         {

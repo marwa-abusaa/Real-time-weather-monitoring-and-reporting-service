@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using WeatherService.Services.Parsers;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.ParsersTesting;
 
 public class JsonWeatherParserTests
 {
@@ -14,11 +14,10 @@ public class JsonWeatherParserTests
         "Temperature": 23.0,
         "Humidity": 85.0
         }
-        """;         
+        """;
 
         var jsonWeatherParser = new JsonWeatherParser();
         var result = jsonWeatherParser.Parse(validInputJson);
-
 
         result.Location.Should().Be("Tulkarem");
         result.Temperature.Should().Be(23.0);

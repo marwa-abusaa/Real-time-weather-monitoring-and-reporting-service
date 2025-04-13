@@ -3,7 +3,7 @@ using WeatherService.Bots;
 using WeatherService.Models;
 using WeatherService.Services;
 
-namespace WeatherService.Tests;
+namespace WeatherService.Tests.WeatherMonitorTesting;
 
 public class WeatherNotifierTests
 {
