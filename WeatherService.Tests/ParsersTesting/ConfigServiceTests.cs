@@ -3,6 +3,7 @@ using WeatherService.Models;
 using WeatherService.Services.FileReaders;
 using FluentAssertions;
 using System.Text.Json;
+using FluentAssertions.Execution;
 
 namespace WeatherService.Tests.ParsersTesting;
 
@@ -37,10 +38,14 @@ public class ConfigServiceTests
         var results = configService.loadConfigSettings();
 
         //Assert
+        using (new AssertionScope())
+        {
         results.Should().ContainKey("RainBot");
         results["RainBot"].Enabled.Should().Be(true);
         results["RainBot"].Threshold.Should().Be(70);
         results["RainBot"].Message.Should().Be("It looks like it's about to pour down!");
+        }
+
     }
 
     [Fact]
