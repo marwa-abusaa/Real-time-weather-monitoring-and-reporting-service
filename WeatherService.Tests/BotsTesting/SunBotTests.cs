@@ -1,5 +1,4 @@
-﻿using AutoFixture;
-using WeatherService.Models;
+﻿using WeatherService.Models;
 using WeatherService.Services.Bots;
 
 namespace WeatherService.Tests.BotsTesting;
