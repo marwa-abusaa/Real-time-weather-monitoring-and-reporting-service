@@ -12,12 +12,13 @@ public class SunBotService : IBotService
         this.botConfig = botConfig;
     }
 
-    public void Activate(WeatherData data)
+    public bool Activate(WeatherData data)
     {
         if (botConfig.Enabled && data.Temperature > botConfig.Threshold)
         {
-            Console.WriteLine("SunBot activated!");
-            Console.WriteLine(botConfig.Message);
+            ConsoleMessageWriter.Write($"SunBot activated!\n{botConfig.Message}");
+            return true;
         }
+        return false;
     }
 }

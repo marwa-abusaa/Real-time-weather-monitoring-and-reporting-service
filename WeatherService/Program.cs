@@ -1,6 +1,8 @@
 ﻿using WeatherService.Bots;
+using WeatherService.Models;
 using WeatherService.Presentation;
 using WeatherService.Services;
+using WeatherService.Services.FileReaders;
 
 namespace WeatherService;
 
@@ -9,7 +11,8 @@ public class Program
     public static void Main(string[] args)
     {
         string filePath = "C:\\Users\\hp\\source\\repos\\WeatherService\\WeatherService\\Config\\botsSettings.json";
-        ConfigService configService = new ConfigService(filePath);
+        IFileReader fileReader = new FileReader();
+        ConfigService configService = new ConfigService(filePath, fileReader);
         var botConfigs = configService.loadConfigSettings();
         BotFactory botFactory = new BotFactory(botConfigs);
         var bots = botFactory.CreateBotList();
