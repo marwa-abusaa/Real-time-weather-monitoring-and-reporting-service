@@ -8,7 +8,7 @@ namespace WeatherService.Tests.ParsersTesting;
 public class ConfigServiceTests
 {
     [Fact]
-    public void LoadConfigSettings_ShouldReturnDeserializedDictionary()
+    public void LoadConfigSettings_ValidJsonInput_ShouldReturnDeserializedDictionary()
     {
         var fakeJsonConfig = """
             {
@@ -31,6 +31,5 @@ public class ConfigServiceTests
         results["RainBot"].Enabled.Should().Be(true);
         results["RainBot"].Threshold.Should().Be(70);
         results["RainBot"].Message.Should().Be("It looks like it's about to pour down!");
-
     }
 }
