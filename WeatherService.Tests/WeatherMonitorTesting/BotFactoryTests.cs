@@ -21,7 +21,7 @@ public class BotFactoryTests
     [InlineData("RainBot")]
     [InlineData("SnowBot")]
     [InlineData("SunBot")]
-    public void CreateBotList_ShouldReturnListOfBots_WhenBotTypesAreValid(string validBot)
+    public void CreateBotList_WhenBotTypesAreValid_ShouldReturnListOfBots(string validBot)
     {       
         var bots = new Dictionary<string, BotConfig>
         {
@@ -36,7 +36,7 @@ public class BotFactoryTests
 
 
     [Fact]
-    public void CreateBotList_ShouldThrowInvalidOperationException_WhenUnknownBotTypeIsProvided()
+    public void CreateBotList_WhenUnknownBotTypeIsProvided_ShouldThrowInvalidOperationException()
     {       
         var bots = new Dictionary<string, BotConfig>
         {
