@@ -6,6 +6,14 @@ namespace WeatherService.Tests.ParsersTesting;
 
 public class WeatherDataParserFactoryTests
 {
+    private readonly WeatherDataParserFactory weatherDataParserFactory;
+
+    public WeatherDataParserFactoryTests()
+    {
+        weatherDataParserFactory = new WeatherDataParserFactory();
+    }
+
+
     [Theory]
     [InlineData("""           
          {
@@ -25,21 +33,25 @@ public class WeatherDataParserFactoryTests
             ", typeof(XmlWeatherParser)
         )]
 
-    [InlineData("Invalid Data", null)]
-
-    public void Create_ShouldReturnCorrectParserBasedOnInputData(string inputData, Type? expectedReturnedType)
+    public void Create_BasedOnInputData_ShouldReturnCorrectParser(string inputData, Type expectedReturnedType)
     {
-        var weatherDataParserFactory = new WeatherDataParserFactory();
-
+        //Act
         var result = weatherDataParserFactory.Create(inputData);
 
-        if (expectedReturnedType == null)
-        {
-            result.Should().BeNull();
-        }
-        else
-        {
-            result.Should().BeOfType(expectedReturnedType);
-        }           
+        //Assert
+        result.Should().BeOfType(expectedReturnedType);                  
+    }
+
+    [Fact]
+    public void Create_WithInvalidData_ShouldReturnNull()
+    {
+        //Arrange
+        string invalidData = "Invalid Data";
+
+        //Act
+        var result = weatherDataParserFactory.Create(invalidData);
+
+        //Assert
+        result.Should().BeNull();
     }
 }
