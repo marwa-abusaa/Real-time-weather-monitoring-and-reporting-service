@@ -27,7 +27,7 @@ public class WeatherDataParserFactoryTests
 
     [InlineData("Invalid Data", null)]
 
-    public void Create_ShouldReturnCorrectParserBasedOnInputData(string inputData, Type expectedReturnedType)
+    public void Create_ShouldReturnCorrectParserBasedOnInputData(string inputData, Type? expectedReturnedType)
     {
         var weatherDataParserFactory = new WeatherDataParserFactory();
 
