@@ -6,7 +6,7 @@ namespace WeatherService.Tests.BotsTesting;
 public class RainBotTests
 {
     [Fact]
-    public void Activate_ShouldReturnTrue_WhenEnabledAndHumidityAboveThreshold()
+    public void Activate_HumidityAboveThresholdAndEnabled_ShouldReturnTrue()
     {
         // Arrange
         var config = new BotConfig
@@ -26,7 +26,7 @@ public class RainBotTests
     }
 
     [Fact]
-    public void Activate_ShouldReturnFalse_WhenNotEnabled()
+    public void Activate_BotNotEnabled_ShouldReturnFalse()
     {
         // Arrange
         var config = new BotConfig
@@ -46,7 +46,7 @@ public class RainBotTests
     }
 
     [Fact]
-    public void Activate_ShouldReturnFalse_WhenHumidityBelowThreshold()
+    public void Activate_HumidityBelowThreshold_ShouldReturnFalse()
     {
         // Arrange
         var config = new BotConfig
