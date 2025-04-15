@@ -6,38 +6,63 @@ namespace WeatherService.Tests.BotsTesting;
 
 public class SunBotTests
 {
-    [Theory]
-    [InlineData(false, 80, 30, "", false)]
-    [InlineData(true, 20, 30, "", false)]
-    [InlineData(true, 36, 30, "Wow, it's a scorcher out there!", true)]
-    public void Activate_ShouldBehaveAccordingToConditions(
-        bool enabled,
-        double temperature,
-        double threshold,
-        string message,
-        bool shouldPrint)
+    [Fact]
+    public void Activate_TemperatureAboveThresholdAndEnabled_ShouldReturnTrue()
     {
-        var fixture = new Fixture();
-        WeatherData weatherData = fixture.Build<WeatherData>().With(w => w.Temperature, temperature).Create();
-        var botConfig = new BotConfig
+        // Arrange
+        var config = new BotConfig
         {
-            Enabled = enabled,
-            Threshold = threshold,
-            Message = message
+            Enabled = true,
+            Threshold = 30,
+            Message = "Wow, it's a scorcher out there!"
         };
+        var data = new WeatherData { Temperature = 36 };
+        var service = new SunBotService(config);
 
-        SunBotService sunBotService = new SunBotService(botConfig);
-        sunBotService.Activate(weatherData);
+        // Act
+        var result = service.Activate(data);
 
+        // Assert
+        Assert.True(result);
+    }
 
-        if (shouldPrint)
+    [Fact]
+    public void Activate_BotNotEnabled_ShouldReturnFalse()
+    {
+        // Arrange
+        var config = new BotConfig
         {
-            Assert.Equal("Wow, it's a scorcher out there!", message);
-        }
-        else
-        {
-            Assert.Equal("", message);
-        }
+            Enabled = false,
+            Threshold = 30,
+            Message = "SunBot isn't activated."
+        };
+        var data = new WeatherData { Temperature = 36 };
+        var service = new SnowBotService(config);
 
+        // Act
+        var result = service.Activate(data);
+
+        // Assert
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Activate_TemperatureBelowThreshold_ShouldReturnFalse()
+    {
+        // Arrange
+        var config = new BotConfig
+        {
+            Enabled = true,
+            Threshold = 30,
+            Message = "SunBot isn't activated. Temperature is below threshold."
+        };
+        var data = new WeatherData { Temperature = 20 };
+        var service = new SunBotService(config);
+
+        // Act
+        var result = service.Activate(data);
+
+        // Assert
+        Assert.False(result);
     }
 }

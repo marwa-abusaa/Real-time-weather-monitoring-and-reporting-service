@@ -1,43 +1,67 @@
-﻿using AutoFixture;
-using WeatherService.Models;
+﻿using WeatherService.Models;
 using WeatherService.Services.Bots;
 
 namespace WeatherService.Tests.BotsTesting;
 
 public class SnowBotTests
 {
-    [Theory]
-    [InlineData(false, 80, 3, "", false)]
-    [InlineData(true, 20, 3, "", false)]
-    [InlineData(true, 0, 3, "Brrr, it's getting chilly!", true)]
-    public void Activate_ShouldBehaveAccordingToConditions(
-        bool enabled,
-        double temperature,
-        double threshold,
-        string message,
-        bool shouldPrint)
+    [Fact]
+    public void Activate_TemperatureBelowThresholdAndEnabled_ShouldReturnTrue()
     {
-        var fixture = new Fixture();
-        WeatherData weatherData = fixture.Build<WeatherData>().With(w => w.Temperature, temperature).Create();
-        var botConfig = new BotConfig
+        // Arrange
+        var config = new BotConfig
         {
-            Enabled = enabled,
-            Threshold = threshold,
-            Message = message
+            Enabled = true,
+            Threshold = 3,
+            Message = "Brrr, it's getting chilly!"
         };
+        var data = new WeatherData { Temperature = 0 };
+        var service = new SnowBotService(config);
 
-        SnowBotService snowBotService = new SnowBotService(botConfig);
-        snowBotService.Activate(weatherData);
+        // Act
+        var result = service.Activate(data);
 
-
-        if (shouldPrint)
-        {
-            Assert.Equal("Brrr, it's getting chilly!", message);
-        }
-        else
-        {
-            Assert.Equal("", message);
-        }
-
+        // Assert
+        Assert.True(result);
     }
+
+    [Fact]
+    public void Activate_BotNotEnabled_ShouldReturnFalse()
+    {
+        // Arrange
+        var config = new BotConfig
+        {
+            Enabled = false,
+            Threshold = 3,
+            Message = "SnowBot isn't activated."
+        };
+        var data = new WeatherData { Temperature = 0 };
+        var service = new SnowBotService(config);
+
+        // Act
+        var result = service.Activate(data);
+
+        // Assert
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Activate_TemperatureAboveThreshold_ShouldReturnFalse()
+    {
+        // Arrange
+        var config = new BotConfig
+        {
+            Enabled = true,
+            Threshold = 3,
+            Message = "SnowBot isn't activated. Temperature is above threshold."
+        };
+        var data = new WeatherData { Temperature = 20 };
+        var service = new SnowBotService(config);
+
+        // Act
+        var result = service.Activate(data);
+
+        // Assert
+        Assert.False(result);
+    }      
 }
