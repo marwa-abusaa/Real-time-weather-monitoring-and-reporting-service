@@ -4,5 +4,5 @@ namespace WeatherService.Bots;
 
 public interface IBotService
 {
-    void Activate(WeatherData data);
+    bool Activate(WeatherData data);
 }

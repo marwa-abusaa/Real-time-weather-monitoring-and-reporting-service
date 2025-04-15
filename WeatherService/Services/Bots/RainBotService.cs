@@ -12,12 +12,13 @@ public class RainBotService : IBotService
         this.botConfig = botConfig;
     }
 
-    public void Activate(WeatherData data)
+    public bool Activate(WeatherData data)
     {
         if(botConfig.Enabled && data.Humidity > botConfig.Threshold)
         {
-            Console.WriteLine("RainBot activated!");
-            Console.WriteLine(botConfig.Message);
+            ConsoleMessageWriter.Write($"RainBot activated!\n{botConfig.Message}");
+            return true;
         }
+        return false;
     }
 }

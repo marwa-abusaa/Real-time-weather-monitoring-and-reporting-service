@@ -12,12 +12,13 @@ public class SnowBotService : IBotService
         this.botConfig = botConfig;
     }
 
-    public void Activate(WeatherData data)
+    public bool Activate(WeatherData data)
     {
         if (botConfig.Enabled && data.Temperature < botConfig.Threshold)
         {
-            Console.WriteLine("SnowBot activated!");
-            Console.WriteLine(botConfig.Message);
+            ConsoleMessageWriter.Write($"SnowBot activated!\n{botConfig.Message}");
+            return true;
         }
+        return false;
     }
 }
